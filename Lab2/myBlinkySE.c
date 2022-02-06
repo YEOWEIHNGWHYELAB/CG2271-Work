@@ -66,6 +66,7 @@ void ledController(led_color_selection color) {
 	}
 }
 
+/* Control the LED with more colors */
 void ledControllerPlus(int color) {
 	offRGB();
 	
