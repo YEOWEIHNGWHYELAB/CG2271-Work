@@ -100,19 +100,19 @@ Image Symbol Table
     .text                                    0x000000d4   Section       40  startup_mkl25z4.o(.text)
     .text                                    0x000000fc   Section       36  init.o(.text)
     i.PORTD_IRQHandler                       0x00000120   Section        0  myisrled.o(i.PORTD_IRQHandler)
-    i.SystemInit                             0x00000158   Section        0  system_mkl25z4.o(i.SystemInit)
-    i.__NVIC_ClearPendingIRQ                 0x00000164   Section        0  myisrled.o(i.__NVIC_ClearPendingIRQ)
-    __NVIC_ClearPendingIRQ                   0x00000165   Thumb Code    18  myisrled.o(i.__NVIC_ClearPendingIRQ)
-    i.__NVIC_SetPriority                     0x0000017c   Section        0  myisrled.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x0000017d   Thumb Code   110  myisrled.o(i.__NVIC_SetPriority)
-    i.__scatterload_copy                     0x000001f4   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00000202   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00000204   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.delay                                  0x00000212   Section        0  myisrled.o(i.delay)
-    delay                                    0x00000213   Thumb Code    20  myisrled.o(i.delay)
-    i.initGPIO                               0x00000228   Section        0  myisrled.o(i.initGPIO)
-    i.initSwitch                             0x000002b4   Section        0  myisrled.o(i.initSwitch)
-    i.ledToggle                              0x0000031c   Section        0  myisrled.o(i.ledToggle)
+    i.SystemInit                             0x00000154   Section        0  system_mkl25z4.o(i.SystemInit)
+    i.__NVIC_ClearPendingIRQ                 0x00000160   Section        0  myisrled.o(i.__NVIC_ClearPendingIRQ)
+    __NVIC_ClearPendingIRQ                   0x00000161   Thumb Code    18  myisrled.o(i.__NVIC_ClearPendingIRQ)
+    i.__NVIC_SetPriority                     0x00000178   Section        0  myisrled.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00000179   Thumb Code   110  myisrled.o(i.__NVIC_SetPriority)
+    i.__scatterload_copy                     0x000001f0   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x000001fe   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00000200   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.delay                                  0x0000020e   Section        0  myisrled.o(i.delay)
+    delay                                    0x0000020f   Thumb Code    20  myisrled.o(i.delay)
+    i.initGPIO                               0x00000224   Section        0  myisrled.o(i.initGPIO)
+    i.initSwitch                             0x000002b0   Section        0  myisrled.o(i.initSwitch)
+    i.ledToggle                              0x00000318   Section        0  myisrled.o(i.ledToggle)
     i.main                                   0x00000368   Section        0  myisrled.o(i.main)
     i.offRGB                                 0x00000398   Section        0  myisrled.o(i.offRGB)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
@@ -183,14 +183,14 @@ Image Symbol Table
     __scatterload                            0x000000fd   Thumb Code    28  init.o(.text)
     __scatterload_rt2                        0x000000fd   Thumb Code     0  init.o(.text)
     PORTD_IRQHandler                         0x00000121   Thumb Code    44  myisrled.o(i.PORTD_IRQHandler)
-    SystemInit                               0x00000159   Thumb Code     8  system_mkl25z4.o(i.SystemInit)
-    __scatterload_copy                       0x000001f5   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00000203   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00000205   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    initGPIO                                 0x00000229   Thumb Code   124  myisrled.o(i.initGPIO)
-    initSwitch                               0x000002b5   Thumb Code    84  myisrled.o(i.initSwitch)
-    ledToggle                                0x0000031d   Thumb Code    66  myisrled.o(i.ledToggle)
-    main                                     0x00000369   Thumb Code    44  myisrled.o(i.main)
+    SystemInit                               0x00000155   Thumb Code     8  system_mkl25z4.o(i.SystemInit)
+    __scatterload_copy                       0x000001f1   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x000001ff   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00000201   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    initGPIO                                 0x00000225   Thumb Code   124  myisrled.o(i.initGPIO)
+    initSwitch                               0x000002b1   Thumb Code    84  myisrled.o(i.initSwitch)
+    ledToggle                                0x00000319   Thumb Code    70  myisrled.o(i.ledToggle)
+    main                                     0x00000369   Thumb Code    40  myisrled.o(i.main)
     offRGB                                   0x00000399   Thumb Code    18  myisrled.o(i.offRGB)
     Region$$Table$$Base                      0x000003b0   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x000003d0   Number         0  anon$$obj.o(Region$$Table)
@@ -214,35 +214,35 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO           96    RESET               startup_mkl25z4.o
-    0x000000c0   0x000000c0   0x00000000   Code   RO          141  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x000000c0   0x000000c0   0x00000004   Code   RO          146    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x000000c4   0x000000c4   0x00000004   Code   RO          149    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x000000c8   0x000000c8   0x00000000   Code   RO          151    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x000000c8   0x000000c8   0x00000000   Code   RO          153    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x000000c8   0x000000c8   0x00000008   Code   RO          154    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x000000d0   0x000000d0   0x00000000   Code   RO          156    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x000000d0   0x000000d0   0x00000000   Code   RO          158    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x000000d0   0x000000d0   0x00000004   Code   RO          147    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
-    0x000000d4   0x000000d4   0x00000028   Code   RO           98  * .text               startup_mkl25z4.o
-    0x000000fc   0x000000fc   0x00000024   Code   RO          160    .text               mc_p.l(init.o)
-    0x00000120   0x00000120   0x00000038   Code   RO            3    i.PORTD_IRQHandler  myisrled.o
-    0x00000158   0x00000158   0x0000000c   Code   RO          107    i.SystemInit        system_mkl25z4.o
-    0x00000164   0x00000164   0x00000018   Code   RO            4    i.__NVIC_ClearPendingIRQ  myisrled.o
-    0x0000017c   0x0000017c   0x00000078   Code   RO            5    i.__NVIC_SetPriority  myisrled.o
-    0x000001f4   0x000001f4   0x0000000e   Code   RO          164    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x00000202   0x00000202   0x00000002   Code   RO          165    i.__scatterload_null  mc_p.l(handlers.o)
-    0x00000204   0x00000204   0x0000000e   Code   RO          166    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x00000212   0x00000212   0x00000014   Code   RO            6    i.delay             myisrled.o
-    0x00000226   0x00000226   0x00000002   PAD
-    0x00000228   0x00000228   0x0000008c   Code   RO            7    i.initGPIO          myisrled.o
-    0x000002b4   0x000002b4   0x00000068   Code   RO            8    i.initSwitch        myisrled.o
-    0x0000031c   0x0000031c   0x0000004c   Code   RO            9    i.ledToggle         myisrled.o
+    0x00000000   0x00000000   0x000000c0   Data   RO           99    RESET               startup_mkl25z4.o
+    0x000000c0   0x000000c0   0x00000000   Code   RO          144  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x000000c0   0x000000c0   0x00000004   Code   RO          149    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x000000c4   0x000000c4   0x00000004   Code   RO          152    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x000000c8   0x000000c8   0x00000000   Code   RO          154    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x000000c8   0x000000c8   0x00000000   Code   RO          156    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x000000c8   0x000000c8   0x00000008   Code   RO          157    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x000000d0   0x000000d0   0x00000000   Code   RO          159    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x000000d0   0x000000d0   0x00000000   Code   RO          161    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x000000d0   0x000000d0   0x00000004   Code   RO          150    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x000000d4   0x000000d4   0x00000028   Code   RO          101  * .text               startup_mkl25z4.o
+    0x000000fc   0x000000fc   0x00000024   Code   RO          163    .text               mc_p.l(init.o)
+    0x00000120   0x00000120   0x00000034   Code   RO            3    i.PORTD_IRQHandler  myisrled.o
+    0x00000154   0x00000154   0x0000000c   Code   RO          110    i.SystemInit        system_mkl25z4.o
+    0x00000160   0x00000160   0x00000018   Code   RO            4    i.__NVIC_ClearPendingIRQ  myisrled.o
+    0x00000178   0x00000178   0x00000078   Code   RO            5    i.__NVIC_SetPriority  myisrled.o
+    0x000001f0   0x000001f0   0x0000000e   Code   RO          167    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x000001fe   0x000001fe   0x00000002   Code   RO          168    i.__scatterload_null  mc_p.l(handlers.o)
+    0x00000200   0x00000200   0x0000000e   Code   RO          169    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x0000020e   0x0000020e   0x00000014   Code   RO            6    i.delay             myisrled.o
+    0x00000222   0x00000222   0x00000002   PAD
+    0x00000224   0x00000224   0x0000008c   Code   RO            7    i.initGPIO          myisrled.o
+    0x000002b0   0x000002b0   0x00000068   Code   RO            8    i.initSwitch        myisrled.o
+    0x00000318   0x00000318   0x00000050   Code   RO            9    i.ledToggle         myisrled.o
     0x00000368   0x00000368   0x00000030   Code   RO           10    i.main              myisrled.o
     0x00000398   0x00000398   0x00000018   Code   RO           11    i.offRGB            myisrled.o
-    0x000003b0   0x000003b0   0x00000020   Data   RO          162    Region$$Table       anon$$obj.o
+    0x000003b0   0x000003b0   0x00000020   Data   RO          165    Region$$Table       anon$$obj.o
     0x000003d0   0x000003d0   0x00000030   PAD
-    0x00000400   0x00000400   0x00000010   Code   RO           97    .ARM.__at_0x400     startup_mkl25z4.o
+    0x00000400   0x00000400   0x00000010   Code   RO          100    .ARM.__at_0x400     startup_mkl25z4.o
 
 
     Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00000410, Size: 0x00000010, Max: 0xffffffff, ABSOLUTE)
@@ -256,7 +256,7 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff010        -       0x00000100   Zero   RW           94    STACK               startup_mkl25z4.o
+    0x1ffff010        -       0x00000100   Zero   RW           97    STACK               startup_mkl25z4.o
 
 
 ==============================================================================
@@ -266,12 +266,12 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       612         84          0         16          0     229255   myisrled.o
+       612         84          0         16          0     229323   myisrled.o
         56         30        192          0        256        892   startup_mkl25z4.o
         12          4          0          0          0        457   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-       682        118        272         16        256     230604   Object Totals
+       682        118        272         16        256     230672   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0         48          0          0          0   (incl. Padding)
 
@@ -310,8 +310,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       768        134        272         16        256     230516   Grand Totals
-       768        134        272         16        256     230516   ELF Image Totals
+       768        134        272         16        256     230584   Grand Totals
+       768        134        272         16        256     230584   ELF Image Totals
        768        134        272         16          0          0   ROM Totals
 
 ==============================================================================

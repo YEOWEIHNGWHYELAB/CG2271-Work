@@ -1,4 +1,5 @@
 #include <MKL25Z4.h>
+#include <stdbool.h>
 
 #define RED_LED 18 // PortB Pin 18
 #define GREEN_LED 19 // PortB Pin 19
@@ -14,7 +15,7 @@ typedef enum led_colors {
 
 unsigned int counter = 0;
 char led_mapping[3][2] = {{0, red_led}, {1, green_led}, {2, blue_led}};
-char led_control = 1;
+bool led_control = 1;
 int int_count = 0;
 
 /* GPIO Initialization Function */
@@ -44,6 +45,8 @@ void offRGB(void) {
 }
 
 void ledToggle(char colour) {
+	offRGB(); // Without this, the LED will just toggle
+	
 	switch(led_mapping[colour][1])
 	{
 		case RED_LED:
@@ -103,14 +106,14 @@ void PORTD_IRQHandler() {
 	
 	// Updating some variable / flag
 	int_count++;
-	// if (int_count > 3) 
-	//	int_count = 0;
-	led_control ^= 1; // Toggle
+	if (int_count > 2) {
+		int_count = 0;
+	}
+	// led_control ^= 1; // Toggle
 	
 	// Clear Interrupt Flag
 	PORTD->ISFR |= MASK(SW_POS); // Write a 1 to ISFR reg for that particular bit position. 
 }
-
 
 int main(void) {
 	// SystemCoreClockUpdate();
@@ -118,18 +121,16 @@ int main(void) {
 	initGPIO();
 	offRGB();
 	
-	while(1)
-	{
-		if(led_control)
-		{
-			ledToggle(0); // Let it blink red or switch it off
+	while(1) {
+		if(led_control) {
+			ledToggle(int_count);
 			delay(0x80000);
 		}
-		else 
-		{
-			//ledToggle(int_count);
-			//delay(0x80000);
-			offRGB();
-		}
+		/*
+		if(led_control) {
+			ledToggle(0); // Note that this alone can toggle the LED, just by setting again
+			delay(0x80000);
+		} 
+		*/
 	}
 }
