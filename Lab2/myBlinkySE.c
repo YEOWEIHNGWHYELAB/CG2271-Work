@@ -5,9 +5,14 @@
 #define BLUE_LED 1 // PortD Pin 1
 #define MASK(x) (1 << (x)) // Left shift binary 1 
 
-#define YELLOW_LED_INDEX 0 
-#define CYAN_LED_INDEX 1 
-#define PINK_LED_INDEX 2 
+#define RED_LED_INDEX 0
+#define GREEN_LED_INDEX 1
+#define BLUE_LED_INDEX 2
+#define YELLOW_LED_INDEX 3 
+#define CYAN_LED_INDEX 4
+#define PINK_LED_INDEX 5 
+#define WHITE_LED_INDEX 6
+
 
 typedef enum led_colors {
 	red_led = RED_LED,
@@ -65,6 +70,15 @@ void ledControllerPlus(int color) {
 	offRGB();
 	
 	switch(color) {
+		case RED_LED_INDEX:
+			PTB->PCOR = MASK(RED_LED);
+			break;
+		case GREEN_LED_INDEX:
+			PTB->PCOR = MASK(GREEN_LED);
+			break;
+		case BLUE_LED_INDEX:
+			PTD->PCOR = MASK(BLUE_LED);
+			break;
 		case YELLOW_LED_INDEX:
 			PTB->PCOR = MASK(RED_LED);
 			PTB->PCOR = MASK(GREEN_LED);
@@ -74,6 +88,11 @@ void ledControllerPlus(int color) {
 			PTD->PCOR = MASK(BLUE_LED);
 			break;
 		case PINK_LED_INDEX:
+			PTD->PCOR = MASK(BLUE_LED);
+			PTB->PCOR = MASK(RED_LED);
+			break;
+		case WHITE_LED_INDEX:
+			PTB->PCOR = MASK(GREEN_LED);
 			PTD->PCOR = MASK(BLUE_LED);
 			PTB->PCOR = MASK(RED_LED);
 			break;
@@ -100,7 +119,7 @@ int main(void) {
 		ledControllerPlus(counter);
 		counter++;
 		
-		if (counter > 0x02) 
+		if (counter > 0x06) 
 			counter = 0;
 		
 		delay(0x80000);
