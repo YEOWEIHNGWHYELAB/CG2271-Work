@@ -82,7 +82,7 @@ void initSwitch(void) {
 	// Select GPIO and enable pull-up resistors and interrupts on
 	// falling edges of pin connected to switch
 	// MUX(1) is for configuring GPIO
-	// IRQC determines how the interrupt is being triggered
+	// IRQC determines how the interrupt is being triggered (Page 184 19-16 IRQC)
 	// We want to interrupt on falling edge here and is 1010...
 	PORTD->PCR[SW_POS] |= (PORT_PCR_MUX(1) |
 												PORT_PCR_PS_MASK | // Pull select the pullup instead of pulldown
@@ -90,10 +90,11 @@ void initSwitch(void) {
 												PORT_PCR_IRQC(0x0a)); // It will shift it by 16 and do a masking... Why shift by 16 is because IRQC is at 16, 17, 18, 19...  
 	
 	// Set PORT D Switch bit to input
-	// Need to clear the bits first by &- and the ~
+	// Need to clear the bits first by &= and the ~
 	PTD->PDDR &= ~MASK(SW_POS); 
 	
 	// Enable Interrupts and config
+	// SOP...
 	// SW is connected to PORTD, you cannot do individual pin for a PORT, can only do for all!
 	NVIC_SetPriority(PORTD_IRQn, 2); // Can set to 0, 1, 2 as we don't have any other interrupts
 	NVIC_ClearPendingIRQ(PORTD_IRQn); // Legacy code, just in case if a bit already set for pending
