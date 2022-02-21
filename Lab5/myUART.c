@@ -8,7 +8,7 @@
 #define UART2_INT_PRIO 128
 
 /* Init UART2 */
-void Init_UART2(uint32_t baud_rate) {
+void init_UART2(uint32_t baud_rate) {
 	uint32_t divisor, bus_clock;
 	
 	// enable clock to UART and Port E
@@ -16,11 +16,13 @@ void Init_UART2(uint32_t baud_rate) {
 	SIM->SCGC5 |= SIM_SCGC5_PORTE_MASK;
 	
 	// connect UART to pins for PTE22, PTE23
-	PORTE->PCR[UART_TX_PORTE22] &= ~PORT_PCR_MUX_MASK;
-	PORTE->PCR[UART_TX_PORTE22] |= ~PORT_PCR_MUX(4);
-	
-	PORTE->PCR[UART_RX_PORTE23] &= ~PORT_PCR_MUX_MASK;
-	PORTE->PCR[UART_RX_PORTE23] |= PORT_PCR_MUX(4);
+	// Page 162 (Alt 4)
+  PORTE->PCR[UART_TX_PORTE22] &= ~PORT_PCR_MUX_MASK;
+  PORTE->PCR[UART_TX_PORTE22] |= PORT_PCR_MUX(4); 
+  
+  // Page 162 (Alt 4)
+  PORTE->PCR[UART_RX_PORTE23] &= ~PORT_PCR_MUX_MASK;
+  PORTE->PCR[UART_RX_PORTE23] |= PORT_PCR_MUX(4);
 	
 	// ensure tx and rx are disabled before configuration
 	UART2->C2 &= ~(UART_C2_TE_MASK | UART_C2_RE_MASK);
@@ -37,7 +39,7 @@ void Init_UART2(uint32_t baud_rate) {
 	UART2->C3 = 0;
 	
 	// Enable transmitter and receiver
-	UART2->C2 = UART_C2_TE_MASK | UART_C2_RE_MASK;
+	UART2->C2 |= ((UART_C2_TE_MASK) | (UART_C2_RE_MASK));
 }
 
 // UART2 Transmit Poll
@@ -62,15 +64,17 @@ static void delay(volatile uint32_t nof) {
 	}
 }
 
-int main() {
-	uint8_t rx_data = 0x01; 
-	
-	SystemCoreClockUpdate();
-	Init_UART2(BAUD_RATE);
-	
-	for(;;) {
-		UART2_Transmit_Poll(0x69);
-		delay(0x80000);
-		rx_data++;
-	}
+int main(void) {
+  uint8_t rx_data = 0x69;
+  
+  SystemCoreClockUpdate();
+  init_UART2(BAUD_RATE);
+  
+  while(1) {
+    // RX and TX
+    //rx_data = UART2_Receive_Poll();
+    
+    UART2_Transmit_Poll(rx_data);
+    delay(0x8000);
+  }
 }
