@@ -29,7 +29,7 @@ void init_UART2(uint32_t baud_rate) {
 	
 	// Set baud rate to desired value
 	bus_clock = (DEFAULT_SYSTEM_CLOCK) / 2; // Clock used by UART module is half the system clock
-	divisor = bus_clock /(baud_rate * 16); // Rearrangement of baud rate formula
+	divisor = bus_clock / (baud_rate * 16); // Rearrangement of baud rate formula
 	UART2->BDH = UART_BDH_SBR(divisor >> 8); // divisor is the SBR
 	UART2->BDL = UART_BDL_SBR(divisor); // SBR is 13 bit value -> Need to be broken to 2 reg BDH and BDL 
 	

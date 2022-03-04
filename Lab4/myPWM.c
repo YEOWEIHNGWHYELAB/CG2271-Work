@@ -43,7 +43,7 @@ void initPWM(void) {
 	SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC(1); // MCGFLLCLK or MCGPLLCLK/2
 	
-	// Set Modulo Value 20971520 / 128 = 163840 / 3276 = 50 Hz
+	// Set Modulo Value 20971520 / 128 = 163840, 163840 / 3276 = 50 Hz
 	// TPM1->MOD = 3276;
 	
 	// Set Modulo Value 48000000 / 128 = 375000, 375000 / 7500 = 50 Hz, so you must count up to 7500 before you switch to get 50 Hz
