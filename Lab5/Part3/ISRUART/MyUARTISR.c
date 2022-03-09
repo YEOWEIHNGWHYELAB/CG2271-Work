@@ -211,6 +211,7 @@ int main() {
   Init_UART2(BAUD_RATE);
 	InitGPIO();
 	offLed();
-  while(1) {
+	
+  for(;;){
 	}
 }
