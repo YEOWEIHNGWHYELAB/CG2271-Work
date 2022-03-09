@@ -14,7 +14,7 @@
 
 /* UART RX Command Control */
 #define RX_PERIPHERAL_MASK (0xf0)
-#define RX_PERIPHERAL(X) (((X) & RX_PERIPHERAL_MASK) >> 1)
+#define RX_PERIPHERAL(X) (X >> 4)
 #define RX_COMMAND_MASK (0x0f)
 #define RX_COMMAND(X) (((X) & RX_COMMAND_MASK))
 
@@ -30,7 +30,6 @@
 #define	BLUE_OFF (0x4)
 #define	BLUE_ON (0x5)
 
-
 volatile int count = 0;
 
 typedef enum led_colors {
@@ -39,13 +38,13 @@ typedef enum led_colors {
   blue_led = BLUE_LED,
 }led_colors_t;
 
+
 typedef enum switch_mode {
 	on,
 	off,
 }switch_mode_t;
 
-led_colors_t ledArray[3] = {red_led, green_led, blue_led};
-
+led_colors_t ledArray[3] = {red_led,green_led,blue_led};
 
 void Init_UART2(uint32_t baud_rate) {
   uint32_t divisor, bus_clock;
@@ -100,6 +99,14 @@ void InitGPIO(void) {
 	PTD->PDDR |= MASK(BLUE_LED);
 }
 
+/* Delay Function */
+static void delay(volatile uint32_t nof) {
+  while(nof!=0) {
+    __asm("NOP");
+    nof--;
+  }
+}
+
 void offLed() {
 	PTB->PSOR |= MASK(RED_LED);
 	PTB->PSOR |= MASK(GREEN_LED);
@@ -121,8 +128,7 @@ void ledControl(led_colors_t ledColor, switch_mode_t switchMode) {
 			PTB->PCOR |= MASK(GREEN_LED);
 			break;
 		}
-	}
-	
+	} 
 	//Turn off LED
 	if (switchMode == off){
 		//Set PSOR registers to set LED output
@@ -138,6 +144,7 @@ void ledControl(led_colors_t ledColor, switch_mode_t switchMode) {
 			break;
 		}
 	}
+	
 }
 
 // UART2 Transmit Poll
@@ -163,8 +170,8 @@ void UART2_IRQHandler(void) {
 	if (UART2->S1 & UART_S1_RDRF_MASK) {
 		//received a character
 		uint8_t rx_data = UART2->D;
-		uint8_t rx_peripheral = RX_PERIPHERAL(rx_data); //((rx_data & RX_PERIPHERAL_MASK) >> 1);
-		uint8_t rx_command = RX_COMMAND(rx_data); //((rx_data & RX_COMMAND_MASK));
+		uint8_t rx_peripheral = RX_PERIPHERAL(rx_data);//((rx_data & RX_PERIPHERAL_MASK) >> 1);
+		uint8_t rx_command = RX_COMMAND(rx_data);//((rx_data & RX_COMMAND_MASK));
 		switch(rx_peripheral) {
 			case(RX_MOVE):
 				/*switch(rx_data) {
@@ -212,6 +219,6 @@ int main() {
 	InitGPIO();
 	offLed();
 	
-  for(;;){
+  for(;;) {
 	}
 }

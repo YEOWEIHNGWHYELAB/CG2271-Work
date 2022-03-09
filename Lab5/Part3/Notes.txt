@@ -1,0 +1,5 @@
+Each instruction for now is 8 bits. 
+
+Say for 0x31, which is On Red LED.
+Upper 4 bits is for describing -> 0x3 (LED), 0x2 (Movement)
+Lower 4 bits is for command like Red, Green, Blue

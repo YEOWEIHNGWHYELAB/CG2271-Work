@@ -9,11 +9,14 @@
 #define BLUE_HEX 0x33
 
 // Replace with your network credentials
-const char* ssid = "Edwin";
-const char* password = "blacksyami";
+const char* ssid = "DESKTOP-RQ7DTNT 4610";
+const char* password = "0K91a49-";
 
 // Set web server port number to 80
 WiFiServer server(80);
+
+// Variable to store the HTTP request
+String response, ip_address;
 
 // Variable to store the HTTP request
 String header;
@@ -57,6 +60,7 @@ void setup() {
   Serial.println("");
   Serial.println("WiFi connected.");
   Serial.println("IP address: ");
+  ip_address = WiFi.localIP().toString();
   Serial.println(WiFi.localIP());
   server.begin();
 }
@@ -88,7 +92,7 @@ void loop() {
 
             // turns the GPIOs on and off
             if (header.indexOf("GET /status") >= 0) {
-              Serial.println("WiFi Connected: " + ip_address)
+              Serial.println("WiFi Connected: " + ip_address);
             } else if (header.indexOf("GET /forward") >= 0) {
               Serial.println("Red LED on");
               output26State = "on";

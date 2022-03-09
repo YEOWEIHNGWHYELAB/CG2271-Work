@@ -77,5 +77,4 @@ void ledControl(led_colors_t ledColor, switch_mode_t switchMode) {
 			break;
 		}
 	}
-	
 }

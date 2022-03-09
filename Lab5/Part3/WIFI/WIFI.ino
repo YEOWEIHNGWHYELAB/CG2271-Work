@@ -5,8 +5,8 @@
 #define TXD2 17
 
 // Replace with your network credentials
-const char* ssid = "LAPTOP-LRTF326R 9959";
-const char* password = "123456abc";
+const char* ssid = "DESKTOP-RQ7DTNT 4610";
+const char* password = "0K91a49-";
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -94,58 +94,49 @@ void loop() {
   Serial.println(req);
 
   // Make the client's request.
-  if(req.indexOf("status") != -1)
-  {
+  if (req.indexOf("status") != -1) {
     response = "WiFi Connected: " + ip_address;
   }
 
-  //LED Requests
-  if(req.indexOf("onRed") != -1)
-  {
+  // LED Requests
+  if (req.indexOf("onRed") != -1) {
     digitalWrite(output26, HIGH);
     response = "RED LED ON";
     Serial2.write(0x31);
   }
-  if(req.indexOf("offRed") != -1)
-  {
+  if (req.indexOf("offRed") != -1) {
     digitalWrite(output26, LOW);
     response = "RED LED OFF";
     Serial2.write(0x30);
   }  
-  if(req.indexOf("onGreen") != -1)
-  {
+  if (req.indexOf("onGreen") != -1) {
     digitalWrite(output26, HIGH);
     response = "GREEN LED ON";
     Serial2.write(0x33);
   }
-  if(req.indexOf("offGreen") != -1)
-  {
+  if (req.indexOf("offGreen") != -1) {
     digitalWrite(output26, LOW);
     response = "GREEN LED OFF";
     Serial2.write(0x32);
   }
-  if(req.indexOf("onBlue") != -1)
-  {
+  if (req.indexOf("onBlue") != -1) {
     digitalWrite(output26, HIGH);
     response = "BLUE LED ON";
     Serial2.write(0x35);
   }
-  if(req.indexOf("offBlue") != -1)
-  {
+  if (req.indexOf("offBlue") != -1) {
     digitalWrite(output26, LOW);
     response = "BLUE LED OFF";
     Serial2.write(0x34);
   }
 
-  //Movement Requests
-  if(req.indexOf("forward") != -1)
-  {
+  // Movement Requests
+  if (req.indexOf("forward") != -1) {
     digitalWrite(output26, LOW);
     response = "FORWARD";
     Serial2.write(0x20);
   }
-  if(req.indexOf("left") != -1)
-  {
+  if (req.indexOf("left") != -1) {
     digitalWrite(output26, LOW);
     response = "LEFT";
     Serial2.write(0x21);
@@ -156,8 +147,7 @@ void loop() {
     response = "RIGHT";
     Serial2.write(0x22);
   }
-  if(req.indexOf("reverse") != -1)
-  {
+  if (req.indexOf("reverse") != -1) {
     digitalWrite(output26, LOW);
     response = "REVERSE";
     Serial2.write(0x23);
