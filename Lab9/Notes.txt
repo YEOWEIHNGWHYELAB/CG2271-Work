@@ -1,0 +1,14 @@
+EventFlag-Test
+---------1---------
+0x3 in binary is 011. 
+
+Green thread checks for 0x2 which is 010 i.e. it checks for 2nd bit of ctrl_flag only.
+
+So when you set ctrl_flag to 0x3, both 2nd and 1st bit are set. The 2nd bit will trigger green LED
+---------2---------
+You can think of setting event flag as doing as assignment i.e. ctrl_flag = 0x3 (which is 0b011). 
+Then oseventflagwait is like checking the specified bits to see if they are 1. 
+
+e.g. waiting for 0x5 (0b101) is like checking whether both bit 3 and 1 are set. 
+
+Waiting for 0x4 (0b100) is checking whether bit 3 is set (regardless of whether any other bits are set)
